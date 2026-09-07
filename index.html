@@ -105,7 +105,7 @@
       background: linear-gradient(135deg, #ffffff, #f0f6ff);
       border-radius: 24px;
       padding: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.07);
       border: 1px solid rgba(0,0,0,0.04);
     }
@@ -144,49 +144,12 @@
     }
 
     /* =========================
-       メニュー
+       セクションタイトル
     ========================= */
 
     .section-title {
       font-size: 18px;
       margin: 24px 4px 12px;
-    }
-
-    .quick-menu {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .quick-button {
-      border: none;
-      background: white;
-      border-radius: 20px;
-      padding: 18px 14px;
-      text-align: left;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.05);
-      transition: transform 0.15s;
-    }
-
-    .quick-button:active {
-      transform: scale(0.97);
-    }
-
-    .quick-icon {
-      font-size: 27px;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .quick-title {
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    .quick-text {
-      color: #888;
-      font-size: 12px;
-      margin-top: 4px;
     }
 
     /* =========================
@@ -195,7 +158,7 @@
 
     .search-box {
       position: relative;
-      margin-top: 20px;
+      margin-top: 0;
     }
 
     .search-box input {
@@ -209,12 +172,19 @@
       font-size: 15px;
     }
 
+    .search-box input:focus {
+      box-shadow:
+        0 0 0 2px rgba(0,0,0,0.08),
+        0 5px 18px rgba(0,0,0,0.05);
+    }
+
     .search-icon {
       position: absolute;
       left: 17px;
       top: 50%;
       transform: translateY(-50%);
       color: #999;
+      pointer-events: none;
     }
 
     /* =========================
@@ -250,7 +220,7 @@
     }
 
     /* =========================
-       施設カード
+       施設一覧
     ========================= */
 
     .facility-list {
@@ -264,6 +234,7 @@
       margin-bottom: 12px;
       box-shadow: 0 5px 18px rgba(0,0,0,0.05);
       position: relative;
+      transition: transform 0.12s;
     }
 
     .facility-card:active {
@@ -492,79 +463,72 @@
   <main id="homePage" class="page">
 
     <!-- 今日のおすすめ -->
+
     <div class="recommend-card" id="recommendCard">
     </div>
 
 
-    <h2 class="section-title">どんな日に行く？</h2>
-
-    <div class="quick-menu">
-
-      <button class="quick-button" onclick="applyFilter('sunny')">
-        <span class="quick-icon">☀️</span>
-        <div class="quick-title">晴れの日</div>
-        <div class="quick-text">外で思いっきり</div>
-      </button>
-
-      <button class="quick-button" onclick="applyFilter('rain')">
-        <span class="quick-icon">☔</span>
-        <div class="quick-title">雨の日</div>
-        <div class="quick-text">屋内で楽しむ</div>
-      </button>
-
-      <button class="quick-button" onclick="applyFilter('child')">
-        <span class="quick-icon">👶</span>
-        <div class="quick-title">子ども向け</div>
-        <div class="quick-text">3歳でも楽しめる</div>
-      </button>
-
-      <button class="quick-button" onclick="applyFilter('free')">
-        <span class="quick-icon">💰</span>
-        <div class="quick-title">無料</div>
-        <div class="quick-text">お金をかけずに</div>
-      </button>
-
-    </div>
-
-
     <!-- 検索 -->
-    <h2 class="section-title">場所を探す</h2>
+
+    <h2 class="section-title">🔍 行きたい場所を探す</h2>
 
     <div class="search-box">
+
       <span class="search-icon">🔍</span>
+
       <input
         id="searchInput"
         type="search"
         placeholder="施設名・地域・ジャンルで検索"
         oninput="searchFacilities()"
       >
+
     </div>
 
 
     <!-- ジャンル -->
+
     <div class="filter-scroll" style="margin-top: 10px;">
 
-      <button class="filter-chip active" onclick="setGenre('all', this)">
+      <button
+        class="filter-chip active"
+        onclick="setGenre('all', this)"
+      >
         すべて
       </button>
 
-      <button class="filter-chip" onclick="setGenre('公園', this)">
+      <button
+        class="filter-chip"
+        onclick="setGenre('公園', this)"
+      >
         🌳 公園
       </button>
 
-      <button class="filter-chip" onclick="setGenre('動物園', this)">
+      <button
+        class="filter-chip"
+        onclick="setGenre('動物園', this)"
+      >
         🐘 動物
       </button>
 
-      <button class="filter-chip" onclick="setGenre('水族館', this)">
+      <button
+        class="filter-chip"
+        onclick="setGenre('水族館', this)"
+      >
         🐟 水族館
       </button>
 
-      <button class="filter-chip" onclick="setGenre('室内遊び場', this)">
+      <button
+        class="filter-chip"
+        onclick="setGenre('室内遊び場', this)"
+      >
         🧸 室内遊び
       </button>
 
-      <button class="filter-chip" onclick="setGenre('博物館', this)">
+      <button
+        class="filter-chip"
+        onclick="setGenre('博物館', this)"
+      >
         🏛️ 博物館
       </button>
 
@@ -572,6 +536,7 @@
 
 
     <!-- 施設一覧 -->
+
     <h2 class="section-title" id="listTitle">
       📍 最近追加した場所
     </h2>
@@ -587,7 +552,10 @@
 
   <main id="detailPage" class="detail-page hidden">
 
-    <button class="detail-back" onclick="showHome()">
+    <button
+      class="detail-back"
+      onclick="showHome()"
+    >
       ← 一覧に戻る
     </button>
 
@@ -635,10 +603,13 @@
   ========================= */
 
   let currentGenre = "all";
+
   let currentMode = "all";
 
   let favorites =
-    JSON.parse(localStorage.getItem("oharaFavorites") || "[]");
+    JSON.parse(
+      localStorage.getItem("oharaFavorites") || "[]"
+    );
 
 
   /* =========================
@@ -652,7 +623,9 @@
     }
 
     const randomIndex =
-      Math.floor(Math.random() * facilities.length);
+      Math.floor(
+        Math.random() * facilities.length
+      );
 
     const facility =
       facilities[randomIndex];
@@ -666,13 +639,20 @@
         ✨ 今日のおすすめ
       </div>
 
-      <h2>${facility.name}</h2>
+      <h2>
+        ${facility.name}
+      </h2>
 
       <div class="recommend-meta">
+
         📍 ${facility.prefecture}${facility.city}<br>
+
         👶 ${facility.age}<br>
+
         🚗 ${facility.driveTime}<br>
+
         💰 ${facility.price}
+
       </div>
 
       <button
@@ -709,7 +689,12 @@
             条件に合う施設がありません
           </div>
 
-          <div style="font-size:13px;margin-top:6px;">
+          <div
+            style="
+              font-size:13px;
+              margin-top:6px;
+            "
+          >
             別の条件で探してみてね
           </div>
 
@@ -736,19 +721,25 @@
 
             <button
               class="favorite-button ${isFavorite ? "active" : ""}"
-              onclick="event.stopPropagation(); toggleFavorite('${facility.no}')"
+              onclick="
+                event.stopPropagation();
+                toggleFavorite('${facility.no}')
+              "
               aria-label="お気に入り"
             >
               ${isFavorite ? "⭐" : "☆"}
             </button>
 
+
             <h3>
               ${facility.name}
             </h3>
 
+
             <div class="facility-place">
               📍 ${facility.prefecture}${facility.city}
             </div>
+
 
             <div class="facility-info">
 
@@ -786,49 +777,6 @@
 
     let list =
       [...facilities];
-
-
-    /* モード */
-
-    if (currentMode === "sunny") {
-
-      list =
-        list.filter(
-          facility =>
-            facility.weather.includes("晴れ")
-        );
-
-    }
-
-    if (currentMode === "rain") {
-
-      list =
-        list.filter(
-          facility =>
-            facility.indoorOutdoor === "屋内"
-        );
-
-    }
-
-    if (currentMode === "child") {
-
-      list =
-        list.filter(
-          facility =>
-            facility.age.includes("3歳")
-        );
-
-    }
-
-    if (currentMode === "free") {
-
-      list =
-        list.filter(
-          facility =>
-            facility.price.includes("無料")
-        );
-
-    }
 
 
     /* ジャンル */
@@ -911,7 +859,9 @@
   function setGenre(genre, button) {
 
     currentGenre = genre;
+
     currentMode = "all";
+
 
     document
       .querySelectorAll(".filter-chip")
@@ -919,10 +869,13 @@
         chip.classList.remove("active")
       );
 
+
     button.classList.add("active");
+
 
     const list =
       getFilteredFacilities();
+
 
     document.getElementById("listTitle")
       .textContent =
@@ -930,56 +883,8 @@
           ? "📍 最近追加した場所"
           : `🏷️ ${genre}`;
 
+
     renderFacilities(list);
-
-  }
-
-
-  /* =========================
-     晴れ・雨・子ども・無料
-  ========================= */
-
-  function applyFilter(type) {
-
-    currentMode = type;
-
-    currentGenre = "all";
-
-    document
-      .querySelectorAll(".filter-chip")
-      .forEach(chip =>
-        chip.classList.remove("active")
-      );
-
-    let title = "";
-
-    if (type === "sunny") {
-      title = "☀️ 晴れの日におすすめ";
-    }
-
-    if (type === "rain") {
-      title = "☔ 雨の日におすすめ";
-    }
-
-    if (type === "child") {
-      title = "👶 子ども向け";
-    }
-
-    if (type === "free") {
-      title = "💰 無料で遊べる場所";
-    }
-
-    document.getElementById("listTitle")
-      .textContent = title;
-
-    renderFacilities(
-      getFilteredFacilities()
-    );
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
 
   }
 
@@ -1003,10 +908,12 @@
 
     }
 
+
     localStorage.setItem(
       "oharaFavorites",
       JSON.stringify(favorites)
     );
+
 
     renderFacilities(
       getFilteredFacilities()
@@ -1026,6 +933,7 @@
 
     document.getElementById("detailPage")
       .classList.add("hidden");
+
 
     document.getElementById("navHome")
       .classList.remove("active");
@@ -1068,6 +976,7 @@
           facility.name === name
       );
 
+
     if (!facility) {
       return;
     }
@@ -1091,9 +1000,11 @@
       favorites.includes(facility.no);
 
 
-    let mapUrl =
+    const mapUrl =
       "https://www.google.com/maps/search/?api=1&query="
-      + encodeURIComponent(facility.address);
+      + encodeURIComponent(
+          facility.address
+        );
 
 
     document.getElementById("detailContent")
@@ -1103,15 +1014,22 @@
 
           <button
             class="favorite-button ${isFavorite ? "active" : ""}"
-            style="right:18px;top:18px;"
-            onclick="toggleFavoriteFromDetail('${facility.no}')"
+            style="
+              right:18px;
+              top:18px;
+            "
+            onclick="
+              toggleFavoriteFromDetail('${facility.no}')
+            "
           >
             ${isFavorite ? "⭐" : "☆"}
           </button>
 
+
           <h2>
             ${facility.name}
           </h2>
+
 
           <div class="detail-subtitle">
             ${facility.prefecture}${facility.city}
@@ -1257,6 +1175,7 @@
               🗺️ 地図を見る
             </a>
 
+
             ${
               facility.website
               ? `
@@ -1271,9 +1190,15 @@
               : `
                 <button
                   class="action-button action-sub"
-                  onclick="toggleFavoriteFromDetail('${facility.no}')"
+                  onclick="
+                    toggleFavoriteFromDetail('${facility.no}')
+                  "
                 >
-                  ${isFavorite ? "⭐ 登録済み" : "☆ お気に入り"}
+                  ${
+                    isFavorite
+                    ? "⭐ 登録済み"
+                    : "☆ お気に入り"
+                  }
                 </button>
               `
             }
@@ -1301,11 +1226,13 @@
 
     toggleFavorite(no);
 
+
     const facility =
       facilities.find(
         facility =>
           facility.no === no
       );
+
 
     if (facility) {
       showDetail(facility.name);
@@ -1335,11 +1262,13 @@
 
 
     currentMode = "all";
+
     currentGenre = "all";
 
 
     const searchInput =
       document.getElementById("searchInput");
+
 
     if (searchInput) {
       searchInput.value = "";
