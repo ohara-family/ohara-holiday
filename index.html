@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大原家の休日</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .header {
+      background: white;
+      padding: 25px 20px 20px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .header p {
+      margin: 8px 0 0;
+      color: #777;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .menu button {
+      background: white;
+      border: none;
+      border-radius: 15px;
+      padding: 22px 10px;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+
+    .menu button:active {
+      transform: scale(0.97);
+    }
+
+    .section {
+      padding: 0 20px 30px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 18px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+    }
+
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      margin: 5px 0;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .back-button {
+      display: none;
+      margin: 0 20px 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .detail {
+      padding: 20px;
+    }
+
+    .detail-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .detail-card h2 {
+      margin-top: 0;
+    }
+
+    .detail-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+      line-height: 1.6;
+    }
+
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+
+    .website-button {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      padding: 14px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="header">
+    <h1>🏠 大原家の休日</h1>
+    <p>今日はどこ行く？</p>
+  </div>
+
+  <div class="menu">
+    <button onclick="filterFacilities('sunny')">
+      ☀️<br>晴れの日
+    </button>
+
+    <button onclick="filterFacilities('rain')">
+      ☔<br>雨の日
+    </button>
+
+    <button onclick="filterFacilities('child')">
+      👶<br>子ども向け
+    </button>
+
+    <button onclick="filterFacilities('free')">
+      💰<br>無料
+    </button>
+  </div>
+
+  <button class="back-button" id="backButton" onclick="showAll()">
+    ← 一覧に戻る
+  </button>
+
+  <div class="section" id="facilitySection">
+  </div>
+
+  <div class="detail" id="detailSection" style="display: none;">
+  </div>
+
+  <script src="data.js"></script>
+
+  <script>
+    const section = document.getElementById("facilitySection");
+    const detailSection = document.getElementById("detailSection");
+    const backButton = document.getElementById("backButton");
+
+    function showFacilities(list, title) {
+
+      detailSection.style.display = "none";
+      section.style.display = "block";
+
+      section.innerHTML = `
+        <h2>${title}</h2>
+
+        ${
+          list.length === 0
+          ? `
+            <div class="card">
+              <h3>該当する施設がありません</h3>
+              <p>条件を変えて探してみてね。</p>
+            </div>
+          `
+          : list.map(facility => `
+            <div class="card" onclick="showDetail('${facility.name}')">
+              <h3>${facility.name}</h3>
+              <p>📍 ${facility.prefecture}${facility.city}</p>
+              <p>👶 ${facility.age}</p>
+              <p>💰 ${facility.price}　🚗 ${facility.parking}</p>
+            </div>
+          `).join("")
+        }
+      `;
+    }
+
+    function showDetail(name) {
+
+      const facility = facilities.find(
+        facility => facility.name === name
+      );
+
+      if (!facility) return;
+
+      section.style.display = "none";
+      detailSection.style.display = "block";
+      backButton.style.display = "block";
+
+      detailSection.innerHTML = `
+        <div class="detail-card">
+
+          <h2>${facility.name}</h2>
+
+          <div class="detail-item">
+            📍 <strong>場所</strong><br>
+            ${facility.prefecture}${facility.city}
+          </div>
+
+          <div class="detail-item">
+            🏠 <strong>住所</strong><br>
+            ${facility.address}
+          </div>
+
+          <div class="detail-item">
+            🏷️ <strong>ジャンル</strong><br>
+            ${facility.genre}
+            ${facility.subgenre ? `（${facility.subgenre}）` : ""}
+          </div>
+
+          <div class="detail-item">
+            🚗 <strong>距離・車移動時間</strong><br>
+            ${facility.distance}・${facility.driveTime}
+          </div>
+
+          <div class="detail-item">
+            🛣️ <strong>高速料金</strong><br>
+            ${facility.toll}
+          </div>
+
+          <div class="detail-item">
+            🕐 <strong>営業時間</strong><br>
+            ${facility.hours}
+          </div>
+
+          <div class="detail-item">
+            💰 <strong>料金</strong><br>
+            ${facility.price}
+          </div>
+
+          <div class="detail-item">
+            🚗 <strong>駐車場</strong><br>
+            ${facility.parking}
+          </div>
+
+          <div class="detail-item">
+            🌸 <strong>季節</strong><br>
+            ${facility.season}
+          </div>
+
+          <div class="detail-item">
+            👶 <strong>対象年齢</strong><br>
+            ${facility.age}
+          </div>
+
+          <div class="detail-item">
+            ☀️ <strong>天気</strong><br>
+            ${facility.weather}
+          </div>
+
+          <div class="detail-item">
+            📝 <strong>メモ</strong><br>
+            ${facility.memo}
+          </div>
+
+          ${
+            facility.website
+            ? `
+              <a
+                class="website-button"
+                href="${facility.website}"
+                target="_blank"
+              >
+                🌐 公式サイトを見る
+              </a>
+            `
+            : ""
+          }
+
+        </div>
+      `;
+    }
+
+    function showAll() {
+
+      showFacilities(
+        facilities,
+        "📍 最近追加した場所"
+      );
+
+      detailSection.style.display = "none";
+      section.style.display = "block";
+      backButton.style.display = "none";
+    }
+
+    function filterFacilities(type) {
+
+      let filtered = [];
+      let title = "";
+
+      if (type === "sunny") {
+
+        filtered = facilities.filter(
+          facility => facility.weather.includes("晴れ")
+        );
+
+        title = "☀️ 晴れの日におすすめ";
+      }
+
+      if (type === "rain") {
+
+        filtered = facilities.filter(
+          facility => facility.indoorOutdoor === "屋内"
+        );
+
+        title = "☔ 雨の日におすすめ";
+      }
+
+      if (type === "child") {
+
+        filtered = facilities.filter(
+          facility => facility.age.includes("3歳")
+        );
+
+        title = "👶 子ども向け";
+      }
+
+      if (type === "free") {
+
+        filtered = facilities.filter(
+          facility => facility.price.includes("無料")
+        );
+
+        title = "💰 無料で遊べる場所";
+      }
+
+      showFacilities(filtered, title);
+
+      backButton.style.display = "block";
+    }
+
+    showAll();
+  </script>
+
+</body>
+</html>
