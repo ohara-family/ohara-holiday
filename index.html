@@ -2,11 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
 
   <title>大原家の休日</title>
 
   <style>
+
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
@@ -20,6 +24,7 @@
       margin: 0;
       background: #f6f7f9;
       color: #222;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -38,6 +43,7 @@
       cursor: pointer;
     }
 
+
     /* =========================
        アプリ全体
     ========================= */
@@ -53,6 +59,7 @@
     .hidden {
       display: none !important;
     }
+
 
     /* =========================
        ヘッダー
@@ -87,6 +94,7 @@
       font-size: 14px;
     }
 
+
     /* =========================
        ページ
     ========================= */
@@ -95,53 +103,6 @@
       padding: 18px 16px 20px;
     }
 
-    /* =========================
-       今日のおすすめ
-    ========================= */
-
-    .recommend-card {
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(135deg, #ffffff, #f0f6ff);
-      border-radius: 24px;
-      padding: 22px;
-      margin-bottom: 22px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-      border: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .recommend-label {
-      display: inline-block;
-      font-size: 12px;
-      font-weight: 700;
-      color: #555;
-      background: rgba(255,255,255,0.8);
-      padding: 6px 10px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-    }
-
-    .recommend-card h2 {
-      margin: 0 0 8px;
-      font-size: 23px;
-      line-height: 1.35;
-    }
-
-    .recommend-meta {
-      color: #666;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .recommend-button {
-      margin-top: 15px;
-      border: none;
-      background: #222;
-      color: white;
-      border-radius: 14px;
-      padding: 11px 15px;
-      font-weight: 700;
-    }
 
     /* =========================
        セクションタイトル
@@ -151,6 +112,7 @@
       font-size: 18px;
       margin: 24px 4px 12px;
     }
+
 
     /* =========================
        検索
@@ -163,12 +125,23 @@
 
     .search-box input {
       width: 100%;
+
       border: none;
       outline: none;
+
       background: white;
+
       border-radius: 17px;
-      padding: 15px 18px 15px 45px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+
+      padding:
+        15px
+        18px
+        15px
+        45px;
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,0.05);
+
       font-size: 15px;
     }
 
@@ -180,12 +153,17 @@
 
     .search-icon {
       position: absolute;
+
       left: 17px;
       top: 50%;
+
       transform: translateY(-50%);
+
       color: #999;
+
       pointer-events: none;
     }
+
 
     /* =========================
        絞り込み
@@ -193,9 +171,16 @@
 
     .filter-scroll {
       display: flex;
+
       gap: 8px;
+
       overflow-x: auto;
-      padding: 4px 0 8px;
+
+      padding:
+        4px
+        0
+        8px;
+
       scrollbar-width: none;
     }
 
@@ -205,11 +190,20 @@
 
     .filter-chip {
       flex: 0 0 auto;
-      border: 1px solid #ddd;
+
+      border:
+        1px solid #ddd;
+
       background: white;
+
       border-radius: 999px;
-      padding: 9px 13px;
+
+      padding:
+        9px
+        13px;
+
       font-size: 13px;
+
       white-space: nowrap;
     }
 
@@ -218,6 +212,7 @@
       color: white;
       border-color: #222;
     }
+
 
     /* =========================
        施設一覧
@@ -229,12 +224,20 @@
 
     .facility-card {
       background: white;
+
       border-radius: 20px;
+
       padding: 17px;
+
       margin-bottom: 12px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,0.05);
+
       position: relative;
-      transition: transform 0.12s;
+
+      transition:
+        transform 0.12s;
     }
 
     .facility-card:active {
@@ -242,44 +245,71 @@
     }
 
     .facility-card h3 {
-      margin: 0 42px 7px 0;
+      margin:
+        0
+        42px
+        7px
+        0;
+
       font-size: 17px;
+
       line-height: 1.4;
     }
 
     .facility-place {
       color: #777;
+
       font-size: 13px;
+
       margin-bottom: 8px;
     }
 
     .facility-info {
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 6px;
     }
 
     .info-tag {
       background: #f4f4f4;
+
       border-radius: 8px;
-      padding: 5px 8px;
+
+      padding:
+        5px
+        8px;
+
       font-size: 12px;
+
       color: #555;
     }
 
+
+    /* =========================
+       お気に入りボタン
+    ========================= */
+
     .favorite-button {
       position: absolute;
+
       right: 14px;
       top: 13px;
+
       border: none;
+
       background: transparent;
+
       font-size: 25px;
+
       padding: 5px;
     }
 
     .favorite-button.active {
       transform: scale(1.05);
     }
+
 
     /* =========================
        詳細画面
@@ -291,36 +321,62 @@
 
     .detail-back {
       border: none;
+
       background: white;
+
       border-radius: 12px;
-      padding: 9px 13px;
+
+      padding:
+        9px
+        13px;
+
       margin-bottom: 14px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+
+      box-shadow:
+        0 3px 12px rgba(0,0,0,0.05);
     }
 
     .detail-card {
       background: white;
+
       border-radius: 24px;
+
       padding: 21px;
-      box-shadow: 0 7px 24px rgba(0,0,0,0.06);
+
+      box-shadow:
+        0 7px 24px rgba(0,0,0,0.06);
     }
 
     .detail-card h2 {
-      margin: 0 40px 7px 0;
+      margin:
+        0
+        40px
+        7px
+        0;
+
       font-size: 24px;
+
       line-height: 1.4;
     }
 
     .detail-subtitle {
       color: #777;
+
       font-size: 14px;
+
       margin-bottom: 20px;
     }
 
     .detail-row {
-      padding: 13px 0;
-      border-bottom: 1px solid #eee;
+      padding:
+        13px
+        0;
+
+      border-bottom:
+        1px solid #eee;
+
       font-size: 14px;
+
       line-height: 1.65;
     }
 
@@ -330,37 +386,56 @@
 
     .detail-label {
       color: #888;
+
       font-size: 12px;
+
       font-weight: 700;
+
       margin-bottom: 3px;
     }
 
     .detail-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
       gap: 10px;
+
       margin-top: 18px;
     }
 
     .action-button {
       border: none;
+
       border-radius: 14px;
-      padding: 13px 10px;
+
+      padding:
+        13px
+        10px;
+
       text-align: center;
+
       text-decoration: none;
+
       font-weight: 700;
+
       font-size: 14px;
     }
 
     .action-main {
       background: #222;
+
       color: white;
     }
 
     .action-sub {
       background: #f0f0f0;
+
       color: #222;
     }
+
 
     /* =========================
        下部ナビ
@@ -368,42 +443,72 @@
 
     .bottom-nav {
       position: fixed;
+
       z-index: 100;
+
       left: 50%;
       bottom: 0;
-      transform: translateX(-50%);
+
+      transform:
+        translateX(-50%);
+
       width: 100%;
+
       max-width: 680px;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-top: 1px solid #eee;
+
+      background:
+        rgba(255,255,255,0.96);
+
+      backdrop-filter:
+        blur(12px);
+
+      -webkit-backdrop-filter:
+        blur(12px);
+
+      border-top:
+        1px solid #eee;
+
       padding:
         8px
         12px
-        calc(8px + env(safe-area-inset-bottom));
+        calc(
+          8px +
+          env(safe-area-inset-bottom)
+        );
+
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr
+        1fr;
     }
 
     .nav-button {
       border: none;
+
       background: transparent;
+
       padding: 7px;
+
       color: #777;
+
       font-size: 12px;
     }
 
     .nav-button.active {
       color: #222;
+
       font-weight: 700;
     }
 
     .nav-icon {
       display: block;
+
       font-size: 21px;
+
       margin-bottom: 2px;
     }
+
 
     /* =========================
        空表示
@@ -411,17 +516,27 @@
 
     .empty-card {
       background: white;
+
       border-radius: 20px;
-      padding: 30px 20px;
+
+      padding:
+        30px
+        20px;
+
       text-align: center;
+
       color: #777;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.04);
+
+      box-shadow:
+        0 5px 18px rgba(0,0,0,0.04);
     }
 
     .empty-icon {
       font-size: 35px;
+
       margin-bottom: 10px;
     }
+
 
     /* =========================
        PC表示
@@ -435,99 +550,141 @@
 
       .app {
         background: #f6f7f9;
-        box-shadow: 0 0 30px rgba(0,0,0,0.08);
+
+        box-shadow:
+          0 0 30px rgba(0,0,0,0.08);
       }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
 <div class="app">
+
 
   <!-- =========================
        ヘッダー
   ========================= -->
 
   <header class="top-header">
-    <div class="brand-small">FAMILY HOLIDAY</div>
-    <h1 class="brand-title">🏠 大原家の休日</h1>
-    <p class="brand-subtitle">今日はどこ行く？</p>
+
+    <div class="brand-small">
+      FAMILY HOLIDAY
+    </div>
+
+    <h1 class="brand-title">
+      🏠 大原家の休日
+    </h1>
+
+    <p class="brand-subtitle">
+      今日はどこ行く？
+    </p>
+
   </header>
+
 
 
   <!-- =========================
        ホーム
   ========================= -->
 
-  <main id="homePage" class="page">
-
-    <!-- 今日のおすすめ -->
-
-    <div class="recommend-card" id="recommendCard">
-    </div>
+  <main
+    id="homePage"
+    class="page"
+  >
 
 
     <!-- 検索 -->
 
-    <h2 class="section-title">🔍 行きたい場所を探す</h2>
+    <h2 class="section-title">
+      🔍 行きたい場所を探す
+    </h2>
+
 
     <div class="search-box">
 
-      <span class="search-icon">🔍</span>
+      <span class="search-icon">
+        🔍
+      </span>
 
       <input
         id="searchInput"
         type="search"
         placeholder="施設名・地域・ジャンルで検索"
-        oninput="searchFacilities()"
       >
 
     </div>
 
 
-    <!-- ジャンル -->
 
-    <div class="filter-scroll" style="margin-top: 10px;">
+    <!-- =========================
+         ジャンル
+    ========================= -->
+
+    <div
+      class="filter-scroll"
+      style="margin-top: 10px;"
+    >
 
       <button
         class="filter-chip active"
-        onclick="setGenre('all', this)"
+        onclick="
+          setGenre('all', this)
+        "
       >
         すべて
       </button>
 
+
       <button
         class="filter-chip"
-        onclick="setGenre('公園', this)"
+        onclick="
+          setGenre('公園', this)
+        "
       >
         🌳 公園
       </button>
 
+
       <button
         class="filter-chip"
-        onclick="setGenre('動物園', this)"
+        onclick="
+          setGenre('動物園', this)
+        "
       >
         🐘 動物
       </button>
 
+
       <button
         class="filter-chip"
-        onclick="setGenre('水族館', this)"
+        onclick="
+          setGenre('水族館', this)
+        "
       >
         🐟 水族館
       </button>
 
+
       <button
         class="filter-chip"
-        onclick="setGenre('室内遊び場', this)"
+        onclick="
+          setGenre('室内遊び場', this)
+        "
       >
         🧸 室内遊び
       </button>
 
+
       <button
         class="filter-chip"
-        onclick="setGenre('博物館', this)"
+        onclick="
+          setGenre('博物館', this)
+        "
       >
         🏛️ 博物館
       </button>
@@ -535,22 +692,39 @@
     </div>
 
 
-    <!-- 施設一覧 -->
 
-    <h2 class="section-title" id="listTitle">
-      📍 最近追加した場所
+    <!-- =========================
+         施設一覧
+    ========================= -->
+
+    <h2
+      class="section-title"
+      id="listTitle"
+    >
+      📍 施設一覧
     </h2>
 
-    <div id="facilityList" class="facility-list"></div>
+
+    <div
+      id="facilityList"
+      class="facility-list"
+    >
+    </div>
+
 
   </main>
+
 
 
   <!-- =========================
        詳細
   ========================= -->
 
-  <main id="detailPage" class="detail-page hidden">
+  <main
+    id="detailPage"
+    class="detail-page hidden"
+  >
+
 
     <button
       class="detail-back"
@@ -559,9 +733,12 @@
       ← 一覧に戻る
     </button>
 
+
     <div id="detailContent"></div>
 
+
   </main>
+
 
 
   <!-- =========================
@@ -570,33 +747,67 @@
 
   <nav class="bottom-nav">
 
+
     <button
       id="navHome"
       class="nav-button active"
       onclick="showHome()"
     >
-      <span class="nav-icon">🏠</span>
+
+      <span class="nav-icon">
+        🏠
+      </span>
+
       ホーム
+
     </button>
+
 
     <button
       id="navFavorite"
       class="nav-button"
       onclick="showFavorites()"
     >
-      <span class="nav-icon">⭐</span>
+
+      <span class="nav-icon">
+        ⭐
+      </span>
+
       お気に入り
+
     </button>
 
+
   </nav>
+
 
 </div>
 
 
+
+<!-- =========================
+     施設データ
+========================= -->
+
 <script src="data.js"></script>
 
 
+
+<!-- =========================
+     アプリ処理
+========================= -->
+
 <script>
+
+
+  /* =========================
+     施設データ
+  ========================= */
+
+  const facilities =
+    window.facilities || [];
+
+
 
   /* =========================
      状態
@@ -606,64 +817,14 @@
 
   let currentMode = "all";
 
+
   let favorites =
     JSON.parse(
-      localStorage.getItem("oharaFavorites") || "[]"
+      localStorage.getItem(
+        "oharaFavorites"
+      ) || "[]"
     );
 
-
-  /* =========================
-     今日のおすすめ
-  ========================= */
-
-  function showRecommendation() {
-
-    if (!facilities || facilities.length === 0) {
-      return;
-    }
-
-    const randomIndex =
-      Math.floor(
-        Math.random() * facilities.length
-      );
-
-    const facility =
-      facilities[randomIndex];
-
-    const card =
-      document.getElementById("recommendCard");
-
-    card.innerHTML = `
-
-      <div class="recommend-label">
-        ✨ 今日のおすすめ
-      </div>
-
-      <h2>
-        ${facility.name}
-      </h2>
-
-      <div class="recommend-meta">
-
-        📍 ${facility.prefecture}${facility.city}<br>
-
-        👶 ${facility.age}<br>
-
-        🚗 ${facility.driveTime}<br>
-
-        💰 ${facility.price}
-
-      </div>
-
-      <button
-        class="recommend-button"
-        onclick="showDetail('${facility.name}')"
-      >
-        詳しく見る →
-      </button>
-
-    `;
-  }
 
 
   /* =========================
@@ -672,10 +833,18 @@
 
   function renderFacilities(list) {
 
-    const container =
-      document.getElementById("facilityList");
 
-    if (!list || list.length === 0) {
+    const container =
+      document.getElementById(
+        "facilityList"
+      );
+
+
+    if (
+      !list ||
+      list.length === 0
+    ) {
+
 
       container.innerHTML = `
 
@@ -702,71 +871,111 @@
 
       `;
 
+
       return;
+
     }
 
 
+
     container.innerHTML =
-      list.map(facility => {
-
-        const isFavorite =
-          favorites.includes(facility.no);
-
-        return `
-
-          <div
-            class="facility-card"
-            onclick="showDetail('${facility.name}')"
-          >
-
-            <button
-              class="favorite-button ${isFavorite ? "active" : ""}"
-              onclick="
-                event.stopPropagation();
-                toggleFavorite('${facility.no}')
-              "
-              aria-label="お気に入り"
-            >
-              ${isFavorite ? "⭐" : "☆"}
-            </button>
+      list
+        .map(
+          facility => {
 
 
-            <h3>
-              ${facility.name}
-            </h3>
+            const isFavorite =
+              favorites.includes(
+                facility.no
+              );
 
 
-            <div class="facility-place">
-              📍 ${facility.prefecture}${facility.city}
-            </div>
+            return `
+
+              <div
+                class="facility-card"
+                onclick="
+                  showDetail('${facility.name}')
+                "
+              >
 
 
-            <div class="facility-info">
+                <button
+                  class="
+                    favorite-button
+                    ${
+                      isFavorite
+                        ? "active"
+                        : ""
+                    }
+                  "
+                  onclick="
+                    event.stopPropagation();
+                    toggleFavorite('${facility.no}')
+                  "
+                  aria-label="お気に入り"
+                >
 
-              <span class="info-tag">
-                👶 ${facility.age}
-              </span>
+                  ${
+                    isFavorite
+                      ? "⭐"
+                      : "☆"
+                  }
 
-              <span class="info-tag">
-                🚗 ${facility.driveTime}
-              </span>
+                </button>
 
-              <span class="info-tag">
-                💰 ${facility.price}
-              </span>
 
-              <span class="info-tag">
-                ${facility.weather}
-              </span>
 
-            </div>
+                <h3>
+                  ${facility.name}
+                </h3>
 
-          </div>
 
-        `;
 
-      }).join("");
+                <div class="facility-place">
+                  📍
+                  ${facility.prefecture}
+                  ${facility.city}
+                </div>
+
+
+
+                <div class="facility-info">
+
+
+                  <span class="info-tag">
+                    👶 ${facility.age}
+                  </span>
+
+
+                  <span class="info-tag">
+                    🚗 ${facility.driveTime}
+                  </span>
+
+
+                  <span class="info-tag">
+                    💰 ${facility.price}
+                  </span>
+
+
+                  <span class="info-tag">
+                    ${facility.weather}
+                  </span>
+
+
+                </div>
+
+
+              </div>
+
+            `;
+
+          }
+        )
+        .join("");
+
   }
+
 
 
   /* =========================
@@ -775,62 +984,91 @@
 
   function getFilteredFacilities() {
 
+
     let list =
       [...facilities];
 
 
+
     /* ジャンル */
 
-    if (currentGenre !== "all") {
+    if (
+      currentGenre !== "all"
+    ) {
 
       list =
         list.filter(
           facility =>
-            facility.genre === currentGenre
+            facility.genre ===
+            currentGenre
         );
 
     }
 
 
+
     /* 検索 */
 
     const searchInput =
-      document.getElementById("searchInput");
+      document.getElementById(
+        "searchInput"
+      );
+
 
     const keyword =
       searchInput
-        ? searchInput.value.trim().toLowerCase()
+        ? searchInput.value
+            .trim()
+            .toLowerCase()
         : "";
+
 
 
     if (keyword) {
 
+
       list =
-        list.filter(facility => {
+        list.filter(
+          facility => {
 
-          const text = [
 
-            facility.name,
-            facility.prefecture,
-            facility.city,
-            facility.genre,
-            facility.subgenre,
-            facility.age,
-            facility.weather
+            const text = [
 
-          ]
-          .join(" ")
-          .toLowerCase();
+              facility.name,
 
-          return text.includes(keyword);
+              facility.prefecture,
 
-        });
+              facility.city,
+
+              facility.genre,
+
+              facility.subgenre,
+
+              facility.age,
+
+              facility.weather
+
+            ]
+              .join(" ")
+              .toLowerCase();
+
+
+
+            return text.includes(
+              keyword
+            );
+
+          }
+        );
 
     }
 
 
+
     return list;
+
   }
+
 
 
   /* =========================
@@ -839,54 +1077,89 @@
 
   function searchFacilities() {
 
-    currentMode = "all";
+
+    currentMode =
+      "all";
+
 
     const list =
       getFilteredFacilities();
 
-    document.getElementById("listTitle")
-      .textContent = "🔎 検索結果";
+
+
+    document
+      .getElementById(
+        "listTitle"
+      )
+      .textContent =
+        "🔎 検索結果";
+
+
 
     renderFacilities(list);
 
   }
+
 
 
   /* =========================
      ジャンル
   ========================= */
 
-  function setGenre(genre, button) {
+  function setGenre(
+    genre,
+    button
+  ) {
 
-    currentGenre = genre;
 
-    currentMode = "all";
+    currentGenre =
+      genre;
+
+
+    currentMode =
+      "all";
+
 
 
     document
-      .querySelectorAll(".filter-chip")
-      .forEach(chip =>
-        chip.classList.remove("active")
+      .querySelectorAll(
+        ".filter-chip"
+      )
+      .forEach(
+        chip =>
+          chip.classList.remove(
+            "active"
+          )
       );
 
 
-    button.classList.add("active");
+
+    button.classList.add(
+      "active"
+    );
+
 
 
     const list =
       getFilteredFacilities();
 
 
-    document.getElementById("listTitle")
+
+    document
+      .getElementById(
+        "listTitle"
+      )
       .textContent =
         genre === "all"
-          ? "📍 最近追加した場所"
+          ? "📍 施設一覧"
           : `🏷️ ${genre}`;
+
 
 
     renderFacilities(list);
 
   }
+
 
 
   /* =========================
@@ -895,24 +1168,35 @@
 
   function toggleFavorite(no) {
 
-    if (favorites.includes(no)) {
+
+    if (
+      favorites.includes(no)
+    ) {
+
 
       favorites =
         favorites.filter(
-          item => item !== no
+          item =>
+            item !== no
         );
 
+
     } else {
+
 
       favorites.push(no);
 
     }
 
 
+
     localStorage.setItem(
       "oharaFavorites",
-      JSON.stringify(favorites)
+      JSON.stringify(
+        favorites
+      )
     );
+
 
 
     renderFacilities(
@@ -922,38 +1206,73 @@
   }
 
 
+
   /* =========================
      お気に入り一覧
   ========================= */
 
   function showFavorites() {
 
-    document.getElementById("homePage")
-      .classList.remove("hidden");
 
-    document.getElementById("detailPage")
-      .classList.add("hidden");
+    document
+      .getElementById(
+        "homePage"
+      )
+      .classList.remove(
+        "hidden"
+      );
 
 
-    document.getElementById("navHome")
-      .classList.remove("active");
+    document
+      .getElementById(
+        "detailPage"
+      )
+      .classList.add(
+        "hidden"
+      );
 
-    document.getElementById("navFavorite")
-      .classList.add("active");
+
+
+    document
+      .getElementById(
+        "navHome"
+      )
+      .classList.remove(
+        "active"
+      );
+
+
+    document
+      .getElementById(
+        "navFavorite"
+      )
+      .classList.add(
+        "active"
+      );
+
 
 
     const list =
       facilities.filter(
         facility =>
-          favorites.includes(facility.no)
+          favorites.includes(
+            facility.no
+          )
       );
 
 
-    document.getElementById("listTitle")
-      .textContent = "⭐ お気に入り";
+
+    document
+      .getElementById(
+        "listTitle"
+      )
+      .textContent =
+        "⭐ お気に入り";
+
 
 
     renderFacilities(list);
+
 
 
     window.scrollTo({
@@ -964,11 +1283,13 @@
   }
 
 
+
   /* =========================
      詳細
   ========================= */
 
   function showDetail(name) {
+
 
     const facility =
       facilities.find(
@@ -977,53 +1298,104 @@
       );
 
 
+
     if (!facility) {
       return;
     }
 
 
-    document.getElementById("homePage")
-      .classList.add("hidden");
 
-    document.getElementById("detailPage")
-      .classList.remove("hidden");
+    document
+      .getElementById(
+        "homePage"
+      )
+      .classList.add(
+        "hidden"
+      );
 
 
-    document.getElementById("navHome")
-      .classList.remove("active");
+    document
+      .getElementById(
+        "detailPage"
+      )
+      .classList.remove(
+        "hidden"
+      );
 
-    document.getElementById("navFavorite")
-      .classList.remove("active");
+
+
+    document
+      .getElementById(
+        "navHome"
+      )
+      .classList.remove(
+        "active"
+      );
+
+
+    document
+      .getElementById(
+        "navFavorite"
+      )
+      .classList.remove(
+        "active"
+      );
+
 
 
     const isFavorite =
-      favorites.includes(facility.no);
+      favorites.includes(
+        facility.no
+      );
+
 
 
     const mapUrl =
       "https://www.google.com/maps/search/?api=1&query="
-      + encodeURIComponent(
-          facility.address
-        );
+      +
+      encodeURIComponent(
+        facility.address
+      );
 
 
-    document.getElementById("detailContent")
+
+    document
+      .getElementById(
+        "detailContent"
+      )
       .innerHTML = `
 
         <div class="detail-card">
 
+
           <button
-            class="favorite-button ${isFavorite ? "active" : ""}"
+            class="
+              favorite-button
+              ${
+                isFavorite
+                  ? "active"
+                  : ""
+              }
+            "
             style="
               right:18px;
               top:18px;
             "
             onclick="
-              toggleFavoriteFromDetail('${facility.no}')
+              toggleFavoriteFromDetail(
+                '${facility.no}'
+              )
             "
           >
-            ${isFavorite ? "⭐" : "☆"}
+
+            ${
+              isFavorite
+                ? "⭐"
+                : "☆"
+            }
+
           </button>
+
 
 
           <h2>
@@ -1031,9 +1403,12 @@
           </h2>
 
 
+
           <div class="detail-subtitle">
-            ${facility.prefecture}${facility.city}
+            ${facility.prefecture}
+            ${facility.city}
           </div>
+
 
 
           <div class="detail-row">
@@ -1047,6 +1422,7 @@
           </div>
 
 
+
           <div class="detail-row">
 
             <div class="detail-label">
@@ -1057,11 +1433,12 @@
 
             ${
               facility.subgenre
-              ? `（${facility.subgenre}）`
-              : ""
+                ? `（${facility.subgenre}）`
+                : ""
             }
 
           </div>
+
 
 
           <div class="detail-row">
@@ -1077,6 +1454,7 @@
           </div>
 
 
+
           <div class="detail-row">
 
             <div class="detail-label">
@@ -1086,6 +1464,7 @@
             ${facility.toll}
 
           </div>
+
 
 
           <div class="detail-row">
@@ -1099,6 +1478,7 @@
           </div>
 
 
+
           <div class="detail-row">
 
             <div class="detail-label">
@@ -1108,6 +1488,7 @@
             ${facility.price}
 
           </div>
+
 
 
           <div class="detail-row">
@@ -1121,6 +1502,7 @@
           </div>
 
 
+
           <div class="detail-row">
 
             <div class="detail-label">
@@ -1130,6 +1512,7 @@
             ${facility.season}
 
           </div>
+
 
 
           <div class="detail-row">
@@ -1143,6 +1526,7 @@
           </div>
 
 
+
           <div class="detail-row">
 
             <div class="detail-label">
@@ -1152,6 +1536,7 @@
             ${facility.weather}
 
           </div>
+
 
 
           <div class="detail-row">
@@ -1165,10 +1550,15 @@
           </div>
 
 
+
           <div class="detail-actions">
 
+
             <a
-              class="action-button action-main"
+              class="
+                action-button
+                action-main
+              "
               href="${mapUrl}"
               target="_blank"
             >
@@ -1176,38 +1566,56 @@
             </a>
 
 
+
             ${
               facility.website
-              ? `
-                <a
-                  class="action-button action-sub"
-                  href="${facility.website}"
-                  target="_blank"
-                >
-                  🌐 公式サイト
-                </a>
-              `
-              : `
-                <button
-                  class="action-button action-sub"
-                  onclick="
-                    toggleFavoriteFromDetail('${facility.no}')
-                  "
-                >
-                  ${
-                    isFavorite
-                    ? "⭐ 登録済み"
-                    : "☆ お気に入り"
-                  }
-                </button>
-              `
+                ? `
+
+                  <a
+                    class="
+                      action-button
+                      action-sub
+                    "
+                    href="${facility.website}"
+                    target="_blank"
+                  >
+                    🌐 公式サイト
+                  </a>
+
+                `
+                : `
+
+                  <button
+                    class="
+                      action-button
+                      action-sub
+                    "
+                    onclick="
+                      toggleFavoriteFromDetail(
+                        '${facility.no}'
+                      )
+                    "
+                  >
+
+                    ${
+                      isFavorite
+                        ? "⭐ 登録済み"
+                        : "☆ お気に入り"
+                    }
+
+                  </button>
+
+                `
             }
 
+
           </div>
+
 
         </div>
 
       `;
+
 
 
     window.scrollTo({
@@ -1218,13 +1626,16 @@
   }
 
 
+
   /* =========================
      詳細画面のお気に入り
   ========================= */
 
   function toggleFavoriteFromDetail(no) {
 
+
     toggleFavorite(no);
+
 
 
     const facility =
@@ -1234,11 +1645,17 @@
       );
 
 
+
     if (facility) {
-      showDetail(facility.name);
+
+      showDetail(
+        facility.name
+      );
+
     }
 
   }
+
 
 
   /* =========================
@@ -1247,52 +1664,100 @@
 
   function showHome() {
 
-    document.getElementById("homePage")
-      .classList.remove("hidden");
 
-    document.getElementById("detailPage")
-      .classList.add("hidden");
-
-
-    document.getElementById("navHome")
-      .classList.add("active");
-
-    document.getElementById("navFavorite")
-      .classList.remove("active");
-
-
-    currentMode = "all";
-
-    currentGenre = "all";
-
-
-    const searchInput =
-      document.getElementById("searchInput");
-
-
-    if (searchInput) {
-      searchInput.value = "";
-    }
+    document
+      .getElementById(
+        "homePage"
+      )
+      .classList.remove(
+        "hidden"
+      );
 
 
     document
-      .querySelectorAll(".filter-chip")
-      .forEach((chip, index) => {
-
-        chip.classList.toggle(
-          "active",
-          index === 0
-        );
-
-      });
+      .getElementById(
+        "detailPage"
+      )
+      .classList.add(
+        "hidden"
+      );
 
 
-    document.getElementById("listTitle")
+
+    document
+      .getElementById(
+        "navHome"
+      )
+      .classList.add(
+        "active"
+      );
+
+
+    document
+      .getElementById(
+        "navFavorite"
+      )
+      .classList.remove(
+        "active"
+      );
+
+
+
+    currentMode =
+      "all";
+
+
+    currentGenre =
+      "all";
+
+
+
+    const searchInput =
+      document.getElementById(
+        "searchInput"
+      );
+
+
+
+    if (searchInput) {
+
+      searchInput.value =
+        "";
+
+    }
+
+
+
+    document
+      .querySelectorAll(
+        ".filter-chip"
+      )
+      .forEach(
+        (chip, index) => {
+
+          chip.classList.toggle(
+            "active",
+            index === 0
+          );
+
+        }
+      );
+
+
+
+    document
+      .getElementById(
+        "listTitle"
+      )
       .textContent =
-        "📍 最近追加した場所";
+        "📍 施設一覧";
 
 
-    renderFacilities(facilities);
+
+    renderFacilities(
+      facilities
+    );
+
 
 
     window.scrollTo({
@@ -1303,13 +1768,30 @@
   }
 
 
+
+  /* =========================
+     検索入力
+  ========================= */
+
+  document
+    .getElementById(
+      "searchInput"
+    )
+    .addEventListener(
+      "input",
+      searchFacilities
+    );
+
+
+
   /* =========================
      初期表示
   ========================= */
 
-  showRecommendation();
+  renderFacilities(
+    facilities
+  );
 
-  renderFacilities(facilities);
 
 </script>
 
